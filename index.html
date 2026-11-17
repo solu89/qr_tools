@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SOLU QR & BARCODE MEGA STUDIO PRO — 100% Offline All-in-One Suite</title>
+
+  <style>
+    /* ==========================================================================
+       100% OFFLINE CSS SYSTEM (DARK & LIGHT THEME, RESPONSIVE MOBILE + PC)
+       ========================================================================== */
+    :root {
+      --bg-app: #080c14;
+      --bg-panel: #101726;
+      --bg-card: #182236;
+      --bg-input: #0b111e;
+      --border: #263552;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #3b82f6;
+      --accent-2: #8b5cf6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    [data-theme="light"] {
+      --bg-app: #e2e8f0;
+      --bg-panel: #ffffff;
+      --bg-card: #f8fafc;
+      --bg-input: #ffffff;
+      --border: #cbd5e1;
+      --text-main: #0f172a;
+      --text-sub: #475569;
+      --text-dim: #64748b;
+      --accent: #2563eb;
+      --accent-2: #7c3aed;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-app);
+      color: var(--text-main);
+      font-size: 14px;
+    }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* ==========================================================================
+       TOP NAVIGATION HEADER
+       ========================================================================== */
+    .app-header {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #fff;
+      font-weight: 900;
+      flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      margin: 0;
+      background: linear-gradient(90deg, #60a5fa, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin: 1px 0 0 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       BUTTONS, INPUTS & UI CARDS
+       ========================================================================== */
+    .btn {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: 0.15s ease;
+      user-select: none;
+    }
+
+    .btn:hover { border-color: var(--accent); }
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.32);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #059669, #10b981);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .btn-sm { padding: 6px 10px; font-size: 11px; border-radius: 8px; }
+    .btn-block { width: 100%; }
+
+    .input, .select, .textarea {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 9px 11px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .input:focus, .select:focus, .textarea:focus {
+      border-color: var(--accent);
+    }
+
+    label.lbl {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-bottom: 5px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px;
+      margin-bottom: 12px;
+    }
+
+    .card-head {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #60a5fa;
+      margin: 0 0 10px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+
+    /* ==========================================================================
+       MAIN SPLIT WORKSPACE
+       ========================================================================== */
+    .workspace {
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 61px);
+      padding-bottom: 68px;
+    }
+
+    @media (min-width: 1024px) {
+      .workspace {
+        flex-direction: row;
+        height: calc(100vh - 61px);
+        overflow: hidden;
+        padding-bottom: 0;
+      }
+    }
+
+    /* Mode Selector Rail */
+    .mode-rail {
+      background: var(--bg-panel);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      padding: 8px;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 1024px) {
+      .mode-rail {
+        flex-direction: column;
+        width: 102px;
+        border-bottom: none;
+        border-right: 1px solid var(--border);
+        padding: 10px 7px;
+        overflow-y: auto;
+      }
+    }
+
+    .mode-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-sub);
+      border-radius: 11px;
+      padding: 8px 8px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      min-width: 76px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-align: center;
+      flex-shrink: 0;
+      transition: 0.15s;
+    }
+
+    .mode-btn .ico { font-size: 18px; }
+    .mode-btn:hover { background: var(--bg-card); color: var(--text-main); }
+    .mode-btn.active {
+      background: rgba(59, 130, 246, 0.16);
+      border-color: var(--accent);
+      color: #60a5fa;
+    }
+
+    /* Left/Center Editor Column */
+    .editor-col {
+      flex: 1.15;
+      padding: 14px;
+      overflow-y: auto;
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border);
+    }
+
+    /* Right Live Preview & Output Stage */
+    .preview-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(circle at center, #151f34 0%, var(--bg-app) 100%);
+      overflow-y: auto;
+      padding: 16px;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    [data-theme="light"] .preview-col {
+      background: radial-gradient(circle at center, #cbd5e1 0%, #94a3b8 100%);
+    }
+
+    .preview-stage-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    #qr-preview-canvas {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      display: block;
+    }
+
+    .payload-box {
+      width: 100%;
+      margin-top: 12px;
+      padding: 8px 10px;
+      border-radius: 9px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--text-sub);
+      word-break: break-all;
+      max-height: 58px;
+      overflow-y: auto;
+    }
+
+    .sub-panel { display: none; }
+    .sub-panel.active { display: block; }
+
+    /* Swatches */
+    .swatch-list { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+    .color-pill {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      border: 2px solid var(--border);
+      cursor: pointer;
+    }
+    .color-pill:hover { transform: scale(1.1); border-color: #fff; }
+
+    /* Mobile Bottom Sticky Bar */
+    .mobile-bottom {
+      position: fixed;
+      bottom: 0;
+      inset-x: 0;
+      background: var(--bg-panel);
+      border-top: 1px solid var(--border);
+      padding: 8px 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      z-index: 55;
+    }
+    @media (min-width: 1024px) { .mobile-bottom { display: none; } }
+
+    /* Toast */
+    #toast-wrap {
+      position: fixed;
+      bottom: 72px;
+      right: 14px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      pointer-events: none;
+    }
+    @media (min-width: 1024px) { #toast-wrap { bottom: 18px; } }
+    .toast-msg {
+      background: var(--bg-panel);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      padding: 9px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+    }
+
+    /* Print Media Engine */
+    @page { margin: 8mm; }
+    @media print {
+      body * { visibility: hidden !important; }
+      #print-area, #print-area * { visibility: visible !important; }
+      #print-area {
+        position: fixed !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        background: #ffffff !important;
+      }
+      #print-area img {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dedicated Print Target -->
+  <div id="print-area" style="display:none;"><img id="print-img" alt="Print QR" /></div>
+
+  <!-- ========================================================================
+       HEADER
+       ======================================================================== -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">🔳</div>
+      <div>
+        <h1 class="brand-title">SOLU QR & BARCODE MEGA STUDIO</h1>
+        <p class="brand-sub">12+ Offline Tools • UPI Standee • Wi-Fi • vCard • Barcode • Bulk A4 Sheet • Scanner</p>
+      </div>
+    </div>
+
+    <div class="top-actions">
+      <button type="button" class="btn" id="btn-save-history" title="Save Current QR to History">⭐ Save</button>
+      <button type="button" class="btn" id="btn-theme-toggle" title="Toggle Dark / Light Theme">🌓</button>
+      <button type="button" class="btn" id="btn-download-html" title="Download Complete Offline HTML App">💾 Save App HTML</button>
+      <button type="button" class="btn btn-success" id="btn-print-qr" title="Print QR / Standee / A4 Sheet">🖨️ Print</button>
+      <button type="button" class="btn btn-primary" id="btn-download-png" title="Download High-Res PNG">⬇️ Download PNG</button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MAIN WORKSPACE
+       ======================================================================== -->
+  <div class="workspace">
+
+    <!-- 12 TOOLS NAVIGATION RAIL -->
+    <nav class="mode-rail no-scrollbar" id="mode-rail">
+      <button type="button" class="mode-btn active" data-mode="url">
+        <span class="ico">🌐</span><span>URL / Text</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="upi">
+        <span class="ico">🇮🇳</span><span>UPI Payment</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="standee">
+        <span class="ico">🏪</span><span>Shop Standee</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="wifi">
+        <span class="ico">📶</span><span>Wi-Fi QR</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="whatsapp">
+        <span class="ico">💬</span><span>WhatsApp</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="vcard">
+        <span class="ico">👤</span><span>vCard Contact</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="contact_actions">
+        <span class="ico">📞</span><span>Call/SMS/Mail</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="location">
+        <span class="ico">📍</span><span>Map & Event</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="barcode">
+        <span class="ico">🏷️</span><span>1D Barcode</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="bulk">
+        <span class="ico">🖨️</span><span>A4 Bulk Sheet</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="scanner">
+        <span class="ico">📷</span><span>QR Scanner</span>
+      </button>
+      <button type="button" class="mode-btn" data-mode="history">
+        <span class="ico">🕘</span><span>Saved List</span>
+      </button>
+    </nav>
+
+    <!-- CENTER EDITOR COLUMN -->
+    <section class="editor-col">
+
+      <!-- ====================================================================
+           MODE 1: WEBSITE URL / PLAIN TEXT
+           ==================================================================== -->
+      <div class="sub-panel active" id="panel-url">
+        <div class="card">
+          <div class="card-head"><span>🌐 Website Link, Text or Social Profile</span></div>
+          <label class="lbl">Enter URL, Any Text, YouTube Link, Instagram or Google Review Link</label>
+          <textarea id="in-url" class="textarea" rows="3" placeholder="https://example.com or any custom text...">https://google.com</textarea>
+          <div class="grid-3" style="margin-top:8px;">
+            <button type="button" class="btn btn-sm quick-url" data-val="https://youtube.com/@">▶️ YouTube</button>
+            <button type="button" class="btn btn-sm quick-url" data-val="https://instagram.com/">📸 Instagram</button>
+            <button type="button" class="btn btn-sm quick-url" data-val="https://g.page/r/">⭐ Google Review</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 2: INDIAN UPI PAYMENT QR
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-upi">
+        <div class="card">
+          <div class="card-head">
+            <span>🇮🇳 Indian UPI Payment QR Generator</span>
+            <span style="font-size:10px;color:#10b981;">GPay • PhonePe • Paytm • BHIM</span>
+          </div>
+          <div class="grid-2" style="margin-bottom:8px;">
+            <div>
+              <label class="lbl">UPI ID (VPA) *</label>
+              <input type="text" id="upi-id" class="input" placeholder="e.g. 9876543210@ybl" value="merchant@upi" />
+            </div>
+            <div>
+              <label class="lbl">Payee / Shop Name *</label>
+              <input type="text" id="upi-name" class="input" placeholder="e.g. Solu Digital Centre" value="SOLU DIGITAL CENTRE" />
+            </div>
+          </div>
+          <div class="grid-2">
+            <div>
+              <label class="lbl">Fixed Amount ₹ (Optional)</label>
+              <input type="number" id="upi-amount" class="input" placeholder="Leave blank for any amount" />
+            </div>
+            <div>
+              <label class="lbl">Payment Remark / Note</label>
+              <input type="text" id="upi-note" class="input" placeholder="e.g. Bill Payment" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 3: PRINTABLE SHOP STANDEE POSTER MAKER
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-standee">
+        <div class="card">
+          <div class="card-head"><span>🏪 Printable Shop QR Standee Card</span></div>
+          <p style="font-size:11.5px;color:var(--text-sub);margin:0 0 10px 0;">
+            Creates a complete ready-to-print shop counter card for UPI Payment, Wi-Fi, or Google Review.
+          </p>
+          <div class="grid-2" style="margin-bottom:8px;">
+            <div>
+              <label class="lbl">Business / Shop Title</label>
+              <input type="text" id="st-title" class="input" value="SOLU DIGITAL STUDIO" />
+            </div>
+            <div>
+              <label class="lbl">Standee Theme</label>
+              <select id="st-theme" class="select">
+                <option value="upi">🇮🇳 Scan & Pay (All UPI Apps)</option>
+                <option value="wifi">📶 Free Customer Wi-Fi</option>
+                <option value="review">⭐ Rate Us on Google</option>
+                <option value="whatsapp">💬 Chat on WhatsApp</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid-2" style="margin-bottom:8px;">
+            <div>
+              <label class="lbl">Subtitle / UPI ID / Info</label>
+              <input type="text" id="st-sub" class="input" value="UPI ID: 9876543210@ybl" />
+            </div>
+            <div>
+              <label class="lbl">Footer Contact / Phone</label>
+              <input type="text" id="st-foot" class="input" value="Accepts GPay • PhonePe • Paytm • BHIM" />
+            </div>
+          </div>
+          <label class="lbl">QR Link / UPI String for Standee</label>
+          <input type="text" id="st-payload" class="input" value="upi://pay?pa=9876543210@ybl&pn=SOLU%20DIGITAL%20STUDIO&cu=INR" />
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 4: WI-FI AUTO CONNECT QR
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-wifi">
+        <div class="card">
+          <div class="card-head"><span>📶 Wi-Fi Instant Connect QR</span></div>
+          <div class="grid-2" style="margin-bottom:8px;">
+            <div>
+              <label class="lbl">Wi-Fi Network Name (SSID) *</label>
+              <input type="text" id="wifi-ssid" class="input" placeholder="e.g. Solu_5G_WiFi" value="Solu_Fiber_5G" />
+            </div>
+            <div>
+              <label class="lbl">Wi-Fi Password</label>
+              <input type="text" id="wifi-pass" class="input" placeholder="Password" value="welcome123" />
+            </div>
+          </div>
+          <div class="grid-2">
+            <div>
+              <label class="lbl">Security Type</label>
+              <select id="wifi-sec" class="select">
+                <option value="WPA">WPA / WPA2 / WPA3</option>
+                <option value="WEP">WEP</option>
+                <option value="nopass">Open (No Password)</option>
+              </select>
+            </div>
+            <div>
+              <label class="lbl">Hidden Network?</label>
+              <select id="wifi-hidden" class="select">
+                <option value="false">No (Visible)</option>
+                <option value="true">Yes (Hidden SSID)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 5: WHATSAPP DIRECT CHAT QR
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-whatsapp">
+        <div class="card">
+          <div class="card-head"><span>💬 WhatsApp Click-to-Chat QR</span></div>
+          <div style="margin-bottom:8px;">
+            <label class="lbl">WhatsApp Number (with Country Code, no +)</label>
+            <input type="text" id="wa-phone" class="input" placeholder="e.g. 919876543210" value="919876543210" />
+          </div>
+          <div>
+            <label class="lbl">Pre-Filled Message</label>
+            <textarea id="wa-msg" class="textarea" rows="2" placeholder="Hello! I scanned your QR code...">Hello! I want to inquire about your services.</textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 6: VCARD DIGITAL VISITING CARD
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-vcard">
+        <div class="card">
+          <div class="card-head"><span>👤 vCard Digital Business Contact Card</span></div>
+          <div class="grid-2" style="margin-bottom:8px;">
+            <div>
+              <label class="lbl">Full Name *</label>
+              <input type="text" id="vc-name" class="input" value="Rahul Sharma" />
+            </div>
+            <div>
+              <label class="lbl">Company / Shop Name</label>
+              <input type="text" id="vc-org" class="input" value="Solu Digital Services" />
+            </div>
+            <div>
+              <label class="lbl">Job Title / Role</label>
+              <input type="text" id="vc-title" class="input" value="Proprietor" />
+            </div>
+            <div>
+              <label class="lbl">Mobile Number *</label>
+              <input type="text" id="vc-tel" class="input" value="+919876543210" />
+            </div>
+            <div>
+              <label class="lbl">Email Address</label>
+              <input type="email" id="vc-email" class="input" value="contact@soludigital.com" />
+            </div>
+            <div>
+              <label class="lbl">Website</label>
+              <input type="text" id="vc-url" class="input" value="https://soludigital.com" />
+            </div>
+          </div>
+          <div>
+            <label class="lbl">Office / Shop Address</label>
+            <input type="text" id="vc-adr" class="input" value="Main Market, Station Road, India" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 7: PHONE CALL, SMS & EMAIL QR
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-contact_actions">
+        <div class="card">
+          <div class="card-head"><span>📞 Instant Call, SMS or Email QR</span></div>
+          <div style="margin-bottom:8px;">
+            <label class="lbl">Action Type</label>
+            <select id="act-type" class="select">
+              <option value="tel">📞 Direct Phone Call</option>
+              <option value="sms">✉️ Send Pre-written SMS</option>
+              <option value="mailto">📧 Send Email</option>
+            </select>
+          </div>
+          <div style="margin-bottom:8px;">
+            <label class="lbl">Phone Number or Email ID</label>
+            <input type="text" id="act-target" class="input" value="+919876543210" />
+          </div>
+          <div>
+            <label class="lbl">Message / Subject Body (for SMS & Email)</label>
+            <input type="text" id="act-body" class="input" placeholder="Optional message text..." />
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 8: GOOGLE MAPS LOCATION & CALENDAR EVENT
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-location">
+        <div class="card">
+          <div class="card-head"><span>📍 Google Maps Pin & Event QR</span></div>
+          <div style="margin-bottom:8px;">
+            <label class="lbl">Mode</label>
+            <select id="loc-mode" class="select">
+              <option value="query">🗺️ Place / Shop Name Search on Google Maps</option>
+              <option value="geo">🧭 Exact Latitude & Longitude Coordinates</option>
+            </select>
+          </div>
+          <div id="loc-query-box">
+            <label class="lbl">Shop Name, Landmark & City</label>
+            <input type="text" id="loc-query" class="input" value="India Gate, New Delhi" />
+          </div>
+          <div id="loc-geo-box" class="grid-2" style="display:none;">
+            <div>
+              <label class="lbl">Latitude</label>
+              <input type="text" id="loc-lat" class="input" value="28.6129" />
+            </div>
+            <div>
+              <label class="lbl">Longitude</label>
+              <input type="text" id="loc-lng" class="input" value="77.2295" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 9: 1D PRODUCT BARCODE GENERATOR (CODE-128)
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-barcode">
+        <div class="card">
+          <div class="card-head">
+            <span>🏷️ 1D Product & ID Card Barcode (Code-128)</span>
+            <span style="font-size:10px;color:#10b981;">Laser & POS Scanner Ready</span>
+          </div>
+          <div class="grid-2" style="margin-bottom:8px;">
+            <div>
+              <label class="lbl">Barcode Value (Code / SKU / ID) *</label>
+              <input type="text" id="bc-value" class="input" value="SOLU-2026-001" />
+            </div>
+            <div>
+              <label class="lbl">Product / Item Label (Top)</label>
+              <input type="text" id="bc-title" class="input" value="MRP ₹ 499.00 (Incl. Taxes)" />
+            </div>
+          </div>
+          <div class="grid-2">
+            <div>
+              <label class="lbl">Bar Height (px)</label>
+              <input type="range" id="bc-height" min="50" max="160" value="95" />
+            </div>
+            <div>
+              <label class="lbl">Bar Width Scale</label>
+              <input type="range" id="bc-scale" min="2" max="5" value="3" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 10: A4 BULK STICKER SHEET GENERATOR
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-bulk">
+        <div class="card">
+          <div class="card-head"><span>🖨️ A4 Multi-Sticker Print Sheet</span></div>
+          <p style="font-size:11.5px;color:var(--text-sub);margin:0 0 10px 0;">
+            Enter multiple lines (one QR per line) OR repeat your current QR across an entire A4 sticker sheet.
+          </p>
+          <div class="grid-2" style="margin-bottom:8px;">
+            <div>
+              <label class="lbl">Sheet Mode</label>
+              <select id="bulk-mode" class="select">
+                <option value="repeat">Repeat Current QR Code</option>
+                <option value="list">Custom List (1 Line = 1 QR)</option>
+              </select>
+            </div>
+            <div>
+              <label class="lbl">Stickers Per A4 Sheet</label>
+              <select id="bulk-grid" class="select">
+                <option value="2x3">6 Large Stickers (2 × 3)</option>
+                <option value="3x4" selected>12 Medium Stickers (3 × 4)</option>
+                <option value="4x5">20 Standard Stickers (4 × 5)</option>
+                <option value="4x6">24 Small Stickers (4 × 6)</option>
+                <option value="5x7">35 Mini Stickers (5 × 7)</option>
+              </select>
+            </div>
+          </div>
+          <div id="bulk-list-wrap" style="display:none;margin-bottom:10px;">
+            <label class="lbl">Paste Items (One per line — Format: Text | Optional Label)</label>
+            <textarea id="bulk-lines" class="textarea" rows="4">ID-1001 | Item #1
+ID-1002 | Item #2
+ID-1003 | Item #3
+ID-1004 | Item #4</textarea>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" id="btn-render-bulk">⚡ Generate A4 Sticker Sheet on Preview</button>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 11: QR SCANNER (IMAGE UPLOAD + CAMERA)
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-scanner">
+        <div class="card">
+          <div class="card-head"><span>📷 QR Code Scanner & Decoder</span></div>
+          <p style="font-size:11.5px;color:var(--text-sub);margin:0 0 10px 0;">
+            Scan a QR from an uploaded image or live camera (uses native BarcodeDetector API where supported).
+          </p>
+          <div class="grid-2" style="margin-bottom:10px;">
+            <label class="btn btn-primary">
+              <span>📁 Scan from Image File</span>
+              <input type="file" id="scan-file-in" accept="image/*" style="display:none;" />
+            </label>
+            <button type="button" class="btn btn-success" id="btn-start-cam">🎥 Start Camera Scan</button>
+          </div>
+          <video id="scan-video" playsinline style="width:100%;max-height:220px;border-radius:10px;background:#000;display:none;margin-bottom:8px;"></video>
+          <div>
+            <label class="lbl">Decoded QR Result</label>
+            <textarea id="scan-result" class="textarea" rows="3" readonly placeholder="Scanned text or URL will appear here..."></textarea>
+          </div>
+          <div class="grid-2" style="margin-top:8px;">
+            <button type="button" class="btn btn-sm" id="btn-copy-scan">📋 Copy Result</button>
+            <button type="button" class="btn btn-sm" id="btn-open-scan">🔗 Open If URL</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           MODE 12: SAVED QR HISTORY
+           ==================================================================== -->
+      <div class="sub-panel" id="panel-history">
+        <div class="card">
+          <div class="card-head">
+            <span>🕘 Saved QR Codes History</span>
+            <button type="button" class="btn btn-sm" id="btn-clear-history">🗑️ Clear All</button>
+          </div>
+          <div id="history-list" style="display:flex;flex-direction:column;gap:8px;font-size:12px;"></div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           DESIGNER CUSTOMIZATION PANEL (APPLIES TO ALL QR MODES)
+           ==================================================================== -->
+      <div class="card" id="designer-card">
+        <div class="card-head">
+          <span>🎨 QR Style, Colors, Center Logo & Frame</span>
+          <button type="button" class="btn btn-sm" id="btn-reset-style">Reset Style</button>
+        </div>
+
+        <div class="grid-2" style="margin-bottom:9px;">
+          <div>
+            <label class="lbl">Module Dot Style</label>
+            <select id="st-dot-shape" class="select">
+              <option value="square">◼️ Classic Sharp Squares</option>
+              <option value="rounded" selected>🟦 Smooth Rounded Blocks</option>
+              <option value="dots">⚫ Modern Circle Dots</option>
+              <option value="diamond">🔷 Diamond Gems</option>
+            </select>
+          </div>
+          <div>
+            <label class="lbl">Corner Eye Frame</label>
+            <select id="st-eye-shape" class="select">
+              <option value="square">Square Classic</option>
+              <option value="rounded" selected>Rounded Modern</option>
+              <option value="circle">Circular Bullseye</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Colors & Gradient -->
+        <div class="grid-3" style="margin-bottom:9px;">
+          <div>
+            <label class="lbl">Primary Color</label>
+            <input type="color" id="st-fg1" value="#0f172a" class="input" style="height:36px;padding:2px;" />
+          </div>
+          <div>
+            <label class="lbl">Gradient Color 2</label>
+            <input type="color" id="st-fg2" value="#2563eb" class="input" style="height:36px;padding:2px;" />
+          </div>
+          <div>
+            <label class="lbl">Background</label>
+            <input type="color" id="st-bg" value="#ffffff" class="input" style="height:36px;padding:2px;" />
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px;flex-wrap:wrap;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;cursor:pointer;">
+            <input type="checkbox" id="st-use-grad" checked /> Enable 2-Color Gradient
+          </label>
+          <div class="swatch-list">
+            <button type="button" class="color-pill" style="background:linear-gradient(135deg,#0f172a,#2563eb)" data-c1="#0f172a" data-c2="#2563eb" title="Royal Navy"></button>
+            <button type="button" class="color-pill" style="background:linear-gradient(135deg,#065f46,#10b981)" data-c1="#065f46" data-c2="#10b981" title="Emerald Pay"></button>
+            <button type="button" class="color-pill" style="background:linear-gradient(135deg,#5b21b6,#d946ef)" data-c1="#5b21b6" data-c2="#d946ef" title="PhonePe Violet"></button>
+            <button type="button" class="color-pill" style="background:linear-gradient(135deg,#991b1b,#f97316)" data-c1="#991b1b" data-c2="#f97316" title="Sunset Red"></button>
+            <button type="button" class="color-pill" style="background:#000000" data-c1="#000000" data-c2="#000000" title="Pure Black"></button>
+          </div>
+        </div>
+
+        <!-- Center Logo / Badge -->
+        <div class="grid-2" style="margin-bottom:9px;">
+          <div>
+            <label class="lbl">Center Icon / Badge Preset</label>
+            <select id="st-center-badge" class="select">
+              <option value="none">No Center Icon</option>
+              <option value="₹">₹ Indian Rupee (UPI)</option>
+              <option value="UPI">UPI Text Badge</option>
+              <option value="📶">📶 Wi-Fi Icon</option>
+              <option value="💬">💬 WhatsApp Icon</option>
+              <option value="📍">📍 Location Pin</option>
+              <option value="⭐">⭐ Star Rating</option>
+              <option value="custom">📁 Uploaded Custom Logo</option>
+            </select>
+          </div>
+          <div>
+            <label class="lbl">Upload Custom Shop Logo</label>
+            <label class="btn btn-block" style="height:36px;">
+              <span>🖼️ Choose Logo</span>
+              <input type="file" id="st-logo-file" accept="image/*" style="display:none;" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Frame & Resolution -->
+        <div class="grid-2">
+          <div>
+            <label class="lbl">Bottom Label Badge</label>
+            <input type="text" id="st-frame-text" class="input" placeholder="e.g. SCAN & PAY" value="SCAN ME" />
+          </div>
+          <div>
+            <label class="lbl">Output Resolution: <span id="lbl-qr-size">600 px</span></label>
+            <input type="range" id="st-size" min="300" max="1200" step="50" value="600" />
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT LIVE PREVIEW COLUMN -->
+    <aside class="preview-col">
+      <div class="preview-stage-card">
+        <div style="width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-size:12px;font-weight:800;color:#60a5fa;" id="preview-mode-title">LIVE STUDIO PREVIEW</span>
+          <span style="font-size:11px;color:var(--text-sub);" id="preview-res-badge">600 × 600 px</span>
+        </div>
+
+        <canvas id="qr-preview-canvas" width="600" height="600"></canvas>
+
+        <div class="payload-box" id="live-payload-display">https://google.com</div>
+
+        <div class="grid-3" style="width:100%;margin-top:12px;">
+          <button type="button" class="btn btn-primary" id="btn-dl-png-2">⬇️ PNG</button>
+          <button type="button" class="btn" id="btn-dl-jpg">⬇️ JPG</button>
+          <button type="button" class="btn btn-success" id="btn-print-2">🖨️ Print</button>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- MOBILE STICKY BOTTOM BAR -->
+  <div class="mobile-bottom">
+    <button type="button" class="btn btn-primary" id="mob-dl-png">⬇️ Save PNG</button>
+    <button type="button" class="btn btn-success" id="mob-print">🖨️ Print</button>
+    <button type="button" class="btn" id="mob-save-app">💾 Save App</button>
+  </div>
+
+  <div id="toast-wrap"></div>
+
+  <!-- ========================================================================
+       BUILT-IN 100% OFFLINE QR CODE (ISO/IEC 18004) & CODE-128 BARCODE ENGINE
+       ======================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ----------------------------------------------------------------------
+         PART 1: PURE STANDALONE QR MATRIX GENERATOR (VERSIONS 1 TO 10, LEVEL M)
+         Supports up to 270+ UTF-8 bytes completely offline with zero libraries
+         ---------------------------------------------------------------------- */
+      const QRGenerator = (function () {
+        // Capacities for Error Correction Level M (Total Codewords, EC Codewords per block, Num Blocks Group1, Data Codewords Group1, Num Blocks Group2, Data Codewords Group2)
+        const VERSION_TABLE = [
+          null,
+          [26, 10, 1, 16, 0, 0],   // V1 (21x21)
+          [44, 16, 1, 28, 0, 0],   // V2 (25x25)
+          [70, 26, 1, 44, 0, 0],   // V3 (29x29)
+          [100, 18, 2, 32, 0, 0],  // V4 (33x33)
+          [134, 24, 2, 43, 0, 0],  // V5 (37x37)
+          [172, 16, 4, 27, 0, 0],  // V6 (41x41)
+          [196, 18, 4, 31, 0, 0],  // V7 (45x45)
+          [242, 22, 2, 38, 2, 39], // V8 (49x49)
+          [292, 22, 3, 36, 2, 37], // V9 (53x53)
+          [346, 26, 4, 43, 1, 44], // V10 (57x57)
+          [404, 30, 1, 50, 4, 51], // V11 (61x61)
+          [466, 22, 6, 36, 2, 37]  // V12 (65x65)
+        ];
+
+        const ALIGNMENT_POS = [
+          null, [], [6, 18], [6, 22], [6, 26], [6, 30], [6, 34],
+          [6, 22, 38], [6, 24, 42], [6, 26, 46], [6, 28, 50], [6, 30, 54], [6, 32, 58]
+        ];
+
+        // GF(256) Log & Exp tables for Reed-Solomon
+        const EXP = new Uint8Array(512);
+        const LOG = new Uint8Array(256);
+        (function initGF() {
+          let x = 1;
+          for (let i = 0; i < 255; i++) {
+            EXP[i] = x;
+            LOG[x] = i;
+            x <<= 1;
+            if (x & 0x100) x ^= 0x11d;
+          }
+          for (let i = 255; i < 512; i++) EXP[i] = EXP[i - 255];
+        })();
+
+        function gfMul(a, b) {
+          return (a === 0 || b === 0) ? 0 : EXP[LOG[a] + LOG[b]];
+        }
+
+        function rsGeneratorPoly(degree) {
+          let poly = [1];
+          for (let i = 0; i < degree; i++) {
+            const next = new Array(poly.length + 1).fill(0);
+            const root = EXP[i];
+            for (let j = 0; j < poly.length; j++) {
+              next[j] ^= poly[j];
+              next[j + 1] ^= gfMul(poly[j], root);
+            }
+            poly = next;
+          }
+          return poly;
+        }
+
+        function rsEncode(data, ecLen) {
+          const gen = rsGeneratorPoly(ecLen);
+          const msg = new Uint8Array(data.length + ecLen);
+          msg.set(data);
+          for (let i = 0; i < data.length; i++) {
+            const coef = msg[i];
+            if (coef !== 0) {
+              for (let j = 0; j < gen.length; j++) {
+                msg[i + j] ^= gfMul(gen[j], coef);
+              }
+            }
+          }
+          return msg.slice(data.length);
+        }
+
+        function toUTF8Bytes(str) {
+          return Array.from(new TextEncoder().encode(str));
+        }
+
+        function selectVersion(byteLen) {
+          for (let v = 1; v < VERSION_TABLE.length; v++) {
+            const [, , g1, d1, g2, d2] = VERSION_TABLE[v];
+            const totalDataBytes = g1 * d1 + g2 * d2;
+            const headerBytes = v <= 9 ? 2 : 3;
+            if (byteLen + headerBytes <= totalDataBytes) return v;
+          }
+          return 12;
+        }
+
+        function buildCodewords(bytes, version) {
+          const [totalCw, ecPerBlock, g1, d1, g2, d2] = VERSION_TABLE[version];
+          const totalDataCw = g1 * d1 + g2 * d2;
+
+          const bits = [];
+          function pushBits(val, len) {
+            for (let i = len - 1; i >= 0; i--) bits.push((val >> i) & 1);
+          }
+
+          // Byte mode indicator (0100)
+          pushBits(0b0100, 4);
+          pushBits(bytes.length, version <= 9 ? 8 : 16);
+          bytes.forEach((b) => pushBits(b, 8));
+
+          // Terminator
+          const maxBits = totalDataCw * 8;
+          for (let i = 0; i < 4 && bits.length < maxBits; i++) bits.push(0);
+          while (bits.length % 8 !== 0) bits.push(0);
+
+          const dataCw = [];
+          for (let i = 0; i < bits.length; i += 8) {
+            let b = 0;
+            for (let j = 0; j < 8; j++) b = (b << 1) | bits[i + j];
+            dataCw.push(b);
+          }
+
+          let padToggle = true;
+          while (dataCw.length < totalDataCw) {
+            dataCw.push(padToggle ? 0xec : 0x11);
+            padToggle = !padToggle;
+          }
+
+          // Split into blocks & compute EC
+          const dataBlocks = [];
+          const ecBlocks = [];
+          let offset = 0;
+          for (let i = 0; i < g1; i++) {
+            const blk = dataCw.slice(offset, offset + d1);
+            offset += d1;
+            dataBlocks.push(blk);
+            ecBlocks.push(Array.from(rsEncode(blk, ecPerBlock)));
+          }
+          for (let i = 0; i < g2; i++) {
+            const blk = dataCw.slice(offset, offset + d2);
+            offset += d2;
+            dataBlocks.push(blk);
+            ecBlocks.push(Array.from(rsEncode(blk, ecPerBlock)));
+          }
+
+          const finalCw = [];
+          const maxDataLen = Math.max(d1, d2);
+          for (let i = 0; i < maxDataLen; i++) {
+            for (let b = 0; b < dataBlocks.length; b++) {
+              if (i < dataBlocks[b].length) finalCw.push(dataBlocks[b][i]);
+            }
+          }
+          for (let i = 0; i < ecPerBlock; i++) {
+            for (let b = 0; b < ecBlocks.length; b++) {
+              finalCw.push(ecBlocks[b][i]);
+            }
+          }
+          return finalCw;
+        }
+
+        function createMatrix(text) {
+          let bytes = toUTF8Bytes(text || ' ');
+          if (bytes.length > 360) bytes = bytes.slice(0, 360);
+          const version = selectVersion(bytes.length);
+          const size = version * 4 + 17;
+
+          const grid = Array.from({ length: size }, () => new Uint8Array(size));
+          const reserved = Array.from({ length: size }, () => new Uint8Array(size));
+
+          function setMod(r, c, val, isFunc = true) {
+            if (r < 0 || c < 0 || r >= size || c >= size) return;
+            grid[r][c] = val ? 1 : 0;
+            if (isFunc) reserved[r][c] = 1;
+          }
+
+          // Finder patterns (3 corners)
+          function drawFinder(r0, c0) {
+            for (let dr = -1; dr <= 7; dr++) {
+              for (let dc = -1; dc <= 7; dc++) {
+                const r = r0 + dr, c = c0 + dc;
+                if (r < 0 || c < 0 || r >= size || c >= size) continue;
+                const inOuter = (dr >= 0 && dr <= 6 && (dc === 0 || dc === 6)) || (dc >= 0 && dc <= 6 && (dr === 0 || dr === 6));
+                const inInner = dr >= 2 && dr <= 4 && dc >= 2 && dc <= 4;
+                setMod(r, c, inOuter || inInner ? 1 : 0, true);
+              }
+            }
+          }
+
+          drawFinder(0, 0);
+          drawFinder(0, size - 7);
+          drawFinder(size - 7, 0);
+
+          // Timing patterns
+          for (let i = 8; i < size - 8; i++) {
+            setMod(6, i, i % 2 === 0, true);
+            setMod(i, 6, i % 2 === 0, true);
+          }
+
+          // Alignment patterns
+          const pos = ALIGNMENT_POS[version];
+          for (let i = 0; i < pos.length; i++) {
+            for (let j = 0; j < pos.length; j++) {
+              const r0 = pos[i], c0 = pos[j];
+              if (reserved[r0][c0]) continue;
+              for (let dr = -2; dr <= 2; dr++) {
+                for (let dc = -2; dc <= 2; dc++) {
+                  const dark = Math.max(Math.abs(dr), Math.abs(dc)) !== 1;
+                  setMod(r0 + dr, c0 + dc, dark, true);
+                }
+              }
+            }
+          }
+
+          // Reserve format info & dark module
+          for (let i = 0; i < 9; i++) {
+            if (i !== 6) {
+              reserved[8][i] = 1;
+              reserved[i][8] = 1;
+            }
+          }
+          for (let i = 0; i < 8; i++) {
+            reserved[8][size - 1 - i] = 1;
+            reserved[size - 1 - i][8] = 1;
+          }
+          setMod(size - 8, 8, 1, true);
+
+          // Version info for V >= 7
+          if (version >= 7) {
+            let rem = version;
+            for (let i = 0; i < 12; i++) rem = (rem << 1) ^ ((rem >> 11) * 0x1f25);
+            const vBits = (version << 12) | rem;
+            for (let i = 0; i < 18; i++) {
+              const bit = (vBits >> i) & 1;
+              const a = size - 11 + (i % 3);
+              const b = Math.floor(i / 3);
+              setMod(b, a, bit, true);
+              setMod(a, b, bit, true);
+            }
+          }
+
+          // Place data bits in upward/downward 2-col zigzag
+          const codewords = buildCodewords(bytes, version);
+          const dataBits = [];
+          codewords.forEach((cw) => {
+            for (let i = 7; i >= 0; i--) dataBits.push((cw >> i) & 1);
+          });
+
+          let bitIdx = 0;
+          let up = true;
+          for (let right = size - 1; right >= 1; right -= 2) {
+            if (right === 6) right = 5;
+            for (let vert = 0; vert < size; vert++) {
+              const r = up ? size - 1 - vert : vert;
+              for (let j = 0; j < 2; j++) {
+                const c = right - j;
+                if (!reserved[r][c]) {
+                  const bit = bitIdx < dataBits.length ? dataBits[bitIdx++] : 0;
+                  // Apply Mask 0: (r + c) % 2 === 0
+                  const masked = ((r + c) % 2 === 0) ? (bit ^ 1) : bit;
+                  grid[r][c] = masked;
+                }
+              }
+            }
+            up = !up;
+          }
+
+          // Format Information for Level M (00) + Mask 0 (000) -> 0b101010000010010 (0x5412)
+          const fmtBits = 0x5412;
+          const fmtCoords1 = [
+            [8, 0], [8, 1], [8, 2], [8, 3], [8, 4], [8, 5], [8, 7], [8, 8],
+            [7, 8], [5, 8], [4, 8], [3, 8], [2, 8], [1, 8], [0, 8]
+          ];
+          const fmtCoords2 = [
+            [size - 1, 8], [size - 2, 8], [size - 3, 8], [size - 4, 8], [size - 5, 8], [size - 6, 8], [size - 7, 8],
+            [8, size - 8], [8, size - 7], [8, size - 6], [8, size - 5], [8, size - 4], [8, size - 3], [8, size - 2], [8, size - 1]
+          ];
+          for (let i = 0; i < 15; i++) {
+            const b = (fmtBits >> i) & 1;
+            grid[fmtCoords1[i][0]][fmtCoords1[i][1]] = b;
+            grid[fmtCoords2[i][0]][fmtCoords2[i][1]] = b;
+          }
+
+          return grid;
+        }
+
+        return { createMatrix };
+      })();
+
+      /* ----------------------------------------------------------------------
+         PART 2: PURE STANDALONE CODE-128B 1D BARCODE ENCODER
+         ---------------------------------------------------------------------- */
+      const Code128Generator = (function () {
+        const PATTERNS = [
+          '11011001100','11001101100','11001100110','10010011000','10010001100','10001001100','10011001000','10011000100','10001100100','11001001000',
+          '11001000100','11000100100','10110011100','10011011100','10011001110','10111001100','10011101100','10011100110','11001110010','11001011100',
+          '11001001110','11011100100','11001110100','11101101110','11101001100','11100101100','11100100110','11101100100','11100110100','11100110010',
+          '11011011000','11011000110','11000110110','10100011000','10001011000','10001000110','10110001000','10001101000','10001100010','11010001000',
+          '11000101000','11000100010','10110111000','10110001110','10001101110','10111011000','10111000110','10001110110','11101110110','11010001110',
+          '11000101110','11011101000','11011100010','11011101110','11101011000','11101000110','11100010110','11101101000','11101100010','11100011010',
+          '11101111010','11001000010','11110001010','10100110000','10100001100','10010110000','10010000110','10000101100','10000100110','10110010000',
+          '10110000100','10011010000','10011000010','10000110100','10000110010','11000010010','11001010000','11110111010','11000010100','10001111010',
+          '10100111100','10010111100','10010011110','10111100100','10011110100','10011110010','11110100100','11110010100','11110010010','11011011110',
+          '11011110110','11110110110','10101111000','10100011110','10001011110','10111101000','10111100010','11110101000','11110100010','10111011110',
+          '10111101110','11101011110','11110101110','11010000100','11010010000','11010011100','1100011101011'
+        ];
+
+        function encode(str) {
+          const clean = (str || 'SOLU-128').replace(/[^\x20-\x7E]/g, '');
+          let codes = [104]; // Start Code B
+          let checksum = 104;
+          for (let i = 0; i < clean.length; i++) {
+            const val = clean.charCodeAt(i) - 32;
+            codes.push(val);
+            checksum += val * (i + 1);
+          }
+          codes.push(checksum % 103);
+          codes.push(106); // Stop
+          return codes.map((c) => PATTERNS[c]).join('');
+        }
+
+        return { encode };
+      })();
+
+      /* ----------------------------------------------------------------------
+         PART 3: UI STATE, PAYLOAD BUILDER & DESIGNER RENDERER
+         ---------------------------------------------------------------------- */
+      const STORAGE_KEY = 'solu_qr_mega_studio_history_v1';
+      const previewCanvas = document.getElementById('qr-preview-canvas');
+      const pCtx = previewCanvas.getContext('2d');
+
+      let activeMode = 'url';
+      let customLogoImg = null;
+      let camStream = null;
+
+      function toast(msg) {
+        const wrap = document.getElementById('toast-wrap');
+        const el = document.createElement('div');
+        el.className = 'toast-msg';
+        el.textContent = msg;
+        wrap.appendChild(el);
+        setTimeout(() => el.remove(), 2500);
+      }
+
+      // Theme Toggle
+      document.getElementById('btn-theme-toggle').addEventListener('click', () => {
+        const html = document.documentElement;
+        html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+
+      // Mode Navigation
+      document.querySelectorAll('.mode-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          stopCameraScan();
+          document.querySelectorAll('.mode-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeMode = btn.dataset.mode;
+
+          document.querySelectorAll('.sub-panel').forEach((p) => p.classList.remove('active'));
+          const targetPanel = document.getElementById('panel-' + activeMode);
+          if (targetPanel) targetPanel.classList.add('active');
+
+          // Hide designer card on Barcode / Bulk / Scanner / History if needed
+          const showDes = !['barcode', 'scanner', 'history'].includes(activeMode);
+          document.getElementById('designer-card').style.display = showDes ? 'block' : 'none';
+
+          if (activeMode === 'history') renderHistoryList();
+          renderMainOutput();
+        });
+      });
+
+      // Quick URL chips
+      document.querySelectorAll('.quick-url').forEach((b) => {
+        b.addEventListener('click', () => {
+          document.getElementById('in-url').value = b.dataset.val;
+          renderMainOutput();
+        });
+      });
+
+      // Location Mode Toggle
+      document.getElementById('loc-mode').addEventListener('change', (e) => {
+        const isGeo = e.target.value === 'geo';
+        document.getElementById('loc-query-box').style.display = isGeo ? 'none' : 'block';
+        document.getElementById('loc-geo-box').style.display = isGeo ? 'grid' : 'none';
+        renderMainOutput();
+      });
+
+      // Bulk Mode Toggle
+      document.getElementById('bulk-mode').addEventListener('change', (e) => {
+        document.getElementById('bulk-list-wrap').style.display = e.target.value === 'list' ? 'block' : 'none';
+      });
+
+      // Swatches
+      document.querySelectorAll('.color-pill').forEach((pill) => {
+        pill.addEventListener('click', () => {
+          document.getElementById('st-fg1').value = pill.dataset.c1;
+          document.getElementById('st-fg2').value = pill.dataset.c2;
+          renderMainOutput();
+        });
+      });
+
+      // Custom Logo Upload
+      document.getElementById('st-logo-file').addEventListener('change', (e) => {
+        const f = e.target.files && e.target.files[0];
+        if (!f) return;
+        const r = new FileReader();
+        r.onload = (ev) => {
+          const img = new Image();
+          img.onload = () => {
+            customLogoImg = img;
+            document.getElementById('st-center-badge').value = 'custom';
+            renderMainOutput();
+            toast('🖼️ Custom logo placed in center!');
+          };
+          img.src = ev.target.result;
+        };
+        r.readAsDataURL(f);
+      });
+
+      document.getElementById('st-size').addEventListener('input', (e) => {
+        document.getElementById('lbl-qr-size').textContent = e.target.value + ' px';
+        renderMainOutput();
+      });
+
+      document.getElementById('btn-reset-style').addEventListener('click', () => {
+        document.getElementById('st-dot-shape').value = 'rounded';
+        document.getElementById('st-eye-shape').value = 'rounded';
+        document.getElementById('st-fg1').value = '#0f172a';
+        document.getElementById('st-fg2').value = '#2563eb';
+        document.getElementById('st-bg').value = '#ffffff';
+        document.getElementById('st-use-grad').checked = true;
+        document.getElementById('st-center-badge').value = 'none';
+        document.getElementById('st-frame-text').value = 'SCAN ME';
+        renderMainOutput();
+      });
+
+      function buildPayloadString() {
+        if (activeMode === 'upi') {
+          const pa = document.getElementById('upi-id').value.trim() || 'merchant@upi';
+          const pn = encodeURIComponent(document.getElementById('upi-name').value.trim() || 'Merchant');
+          const am = document.getElementById('upi-amount').value.trim();
+          const tn = encodeURIComponent(document.getElementById('upi-note').value.trim());
+          let url = `upi://pay?pa=${pa}&pn=${pn}&cu=INR`;
+          if (am) url += `&am=${am}`;
+          if (tn) url += `&tn=${tn}`;
+          return url;
+        }
+        if (activeMode === 'standee') {
+          return document.getElementById('st-payload').value.trim() || 'https://google.com';
+        }
+        if (activeMode === 'wifi') {
+          const ssid = document.getElementById('wifi-ssid').value.trim();
+          const pass = document.getElementById('wifi-pass').value;
+          const sec = document.getElementById('wifi-sec').value;
+          const hid = document.getElementById('wifi-hidden').value;
+          return `WIFI:T:${sec};S:${ssid};P:${pass};H:${hid};;`;
+        }
+        if (activeMode === 'whatsapp') {
+          const ph = document.getElementById('wa-phone').value.replace(/\D/g, '');
+          const msg = encodeURIComponent(document.getElementById('wa-msg').value.trim());
+          return `https://wa.me/${ph}?text=${msg}`;
+        }
+        if (activeMode === 'vcard') {
+          const n = document.getElementById('vc-name').value.trim();
+          const org = document.getElementById('vc-org').value.trim();
+          const title = document.getElementById('vc-title').value.trim();
+          const tel = document.getElementById('vc-tel').value.trim();
+          const em = document.getElementById('vc-email').value.trim();
+          const url = document.getElementById('vc-url').value.trim();
+          const adr = document.getElementById('vc-adr').value.trim();
+          return [
+            'BEGIN:VCARD',
+            'VERSION:3.0',
+            `FN:${n}`,
+            org ? `ORG:${org}` : '',
+            title ? `TITLE:${title}` : '',
+            tel ? `TEL:${tel}` : '',
+            em ? `EMAIL:${em}` : '',
+            url ? `URL:${url}` : '',
+            adr ? `ADR:;;${adr};;;;` : '',
+            'END:VCARD'
+          ].filter(Boolean).join('\n');
+        }
+        if (activeMode === 'contact_actions') {
+          const t = document.getElementById('act-type').value;
+          const target = document.getElementById('act-target').value.trim();
+          const body = encodeURIComponent(document.getElementById('act-body').value.trim());
+          if (t === 'tel') return `tel:${target}`;
+          if (t === 'sms') return `SMSTO:${target}:${document.getElementById('act-body').value.trim()}`;
+          return `mailto:${target}?body=${body}`;
+        }
+        if (activeMode === 'location') {
+          const m = document.getElementById('loc-mode').value;
+          if (m === 'geo') {
+            return `geo:${document.getElementById('loc-lat').value.trim()},${document.getElementById('loc-lng').value.trim()}`;
+          }
+          return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(document.getElementById('loc-query').value.trim())}`;
+        }
+        return document.getElementById('in-url').value || 'https://google.com';
+      }
+
+      /* ----------------------------------------------------------------------
+         DRAW STYLED QR CODE TO ANY TARGET CANVAS
+         ---------------------------------------------------------------------- */
+      function drawStyledQR(targetCanvas, payloadText, opts) {
+        const matrix = QRGenerator.createMatrix(payloadText);
+        const modCount = matrix.length;
+        const size = opts.size || 600;
+        const hasFrame = !!opts.frameText;
+        const extraBottom = hasFrame ? Math.round(size * 0.14) : 0;
+
+        targetCanvas.width = size;
+        targetCanvas.height = size + extraBottom;
+        const ctx = targetCanvas.getContext('2d');
+
+        // Background
+        ctx.fillStyle = opts.bg || '#ffffff';
+        ctx.fillRect(0, 0, targetCanvas.width, targetCanvas.height);
+
+        const margin = Math.round(size * 0.08);
+        const qrArea = size - margin * 2;
+        const cell = qrArea / modCount;
+
+        // Foreground Fill (Solid or Gradient)
+        let fillStyle = opts.fg1 || '#0f172a';
+        if (opts.useGrad) {
+          const grad = ctx.createLinearGradient(0, 0, size, size);
+          grad.addColorStop(0, opts.fg1 || '#0f172a');
+          grad.addColorStop(1, opts.fg2 || '#2563eb');
+          fillStyle = grad;
+        }
+        ctx.fillStyle = fillStyle;
+        ctx.strokeStyle = fillStyle;
+
+        function isFinderEye(r, c) {
+          if (r < 7 && c < 7) return true;
+          if (r < 7 && c >= modCount - 7) return true;
+          if (r >= modCount - 7 && c < 7) return true;
+          return false;
+        }
+
+        // Draw Data Modules
+        for (let r = 0; r < modCount; r++) {
+          for (let c = 0; c < modCount; c++) {
+            if (!matrix[r][c] || isFinderEye(r, c)) continue;
+            const x = margin + c * cell;
+            const y = margin + r * cell;
+
+            if (opts.dotShape === 'dots') {
+              ctx.beginPath();
+              ctx.arc(x + cell / 2, y + cell / 2, (cell / 2) * 0.88, 0, Math.PI * 2);
+              ctx.fill();
+            } else if (opts.dotShape === 'rounded') {
+              ctx.beginPath();
+              ctx.roundRect(x + cell * 0.04, y + cell * 0.04, cell * 0.92, cell * 0.92, cell * 0.32);
+              ctx.fill();
+            } else if (opts.dotShape === 'diamond') {
+              ctx.beginPath();
+              ctx.moveTo(x + cell / 2, y);
+              ctx.lineTo(x + cell, y + cell / 2);
+              ctx.lineTo(x + cell / 2, y + cell);
+              ctx.lineTo(x, y + cell / 2);
+              ctx.closePath();
+              ctx.fill();
+            } else {
+              ctx.fillRect(x, y, Math.ceil(cell), Math.ceil(cell));
+            }
+          }
+        }
+
+        // Draw Custom 3 Corner Finder Eyes
+        function drawCustomEye(r0, c0) {
+          const x = margin + c0 * cell;
+          const y = margin + r0 * cell;
+          const outer = cell * 7;
+          const inner = cell * 3;
+          const innerOffset = cell * 2;
+
+          ctx.lineWidth = cell;
+          if (opts.eyeShape === 'circle') {
+            ctx.beginPath();
+            ctx.arc(x + outer / 2, y + outer / 2, outer / 2 - cell / 2, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(x + outer / 2, y + outer / 2, inner / 2, 0, Math.PI * 2);
+            ctx.fill();
+          } else if (opts.eyeShape === 'rounded') {
+            ctx.beginPath();
+            ctx.roundRect(x + cell / 2, y + cell / 2, outer - cell, outer - cell, cell * 1.6);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.roundRect(x + innerOffset, y + innerOffset, inner, inner, cell * 0.8);
+            ctx.fill();
+          } else {
+            ctx.strokeRect(x + cell / 2, y + cell / 2, outer - cell, outer - cell);
+            ctx.fillRect(x + innerOffset, y + innerOffset, inner, inner);
+          }
+        }
+
+        drawCustomEye(0, 0);
+        drawCustomEye(0, modCount - 7);
+        drawCustomEye(modCount - 7, 0);
+
+        // Center Logo or Icon Badge
+        if (opts.centerBadge && opts.centerBadge !== 'none') {
+          const boxSize = Math.round(size * 0.21);
+          const bx = (size - boxSize) / 2;
+          const by = (size - boxSize) / 2;
+
+          ctx.fillStyle = opts.bg || '#ffffff';
+          ctx.beginPath();
+          ctx.roundRect(bx - 5, by - 5, boxSize + 10, boxSize + 10, 14);
+          ctx.fill();
+
+          if (opts.centerBadge === 'custom' && customLogoImg) {
+            ctx.drawImage(customLogoImg, bx, by, boxSize, boxSize);
+          } else {
+            ctx.fillStyle = fillStyle;
+            ctx.beginPath();
+            ctx.roundRect(bx, by, boxSize, boxSize, 11);
+            ctx.fill();
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `900 ${Math.round(boxSize * (opts.centerBadge.length > 2 ? 0.36 : 0.56))}px system-ui, sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(opts.centerBadge, size / 2, size / 2 + 2);
+          }
+        }
+
+        // Bottom Call-To-Action Pill Frame
+        if (hasFrame) {
+          const pillW = Math.round(size * 0.72);
+          const pillH = Math.round(extraBottom * 0.72);
+          const px = (size - pillW) / 2;
+          const py = size + (extraBottom - pillH) / 2 - 4;
+
+          ctx.fillStyle = fillStyle;
+          ctx.beginPath();
+          ctx.roundRect(px, py, pillW, pillH, 999);
+          ctx.fill();
+
+          ctx.fillStyle = '#ffffff';
+          ctx.font = `800 ${Math.round(pillH * 0.5)}px system-ui, sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(opts.frameText.toUpperCase(), size / 2, py + pillH / 2 + 1, pillW - 20);
+        }
+      }
+
+      /* ----------------------------------------------------------------------
+         RENDER SHOP STANDEE POSTER CARD
+         ---------------------------------------------------------------------- */
+      function renderShopStandee() {
+        const title = document.getElementById('st-title').value.trim() || 'SOLU DIGITAL STUDIO';
+        const theme = document.getElementById('st-theme').value;
+        const sub = document.getElementById('st-sub').value.trim();
+        const foot = document.getElementById('st-foot').value.trim();
+        const payload = document.getElementById('st-payload').value.trim() || 'https://google.com';
+
+        const W = 720, H = 1020;
+        previewCanvas.width = W;
+        previewCanvas.height = H;
+
+        const themeColors = {
+          upi: ['#1e3a8a', '#2563eb', '🇮🇳 SCAN & PAY HERE'],
+          wifi: ['#065f46', '#10b981', '📶 FREE WI-FI ACCESS'],
+          review: ['#92400e', '#f59e0b', '⭐ RATE US ON GOOGLE'],
+          whatsapp: ['#14532d', '#22c55e', '💬 WHATSAPP QUICK CHAT']
+        }[theme] || ['#1e3a8a', '#2563eb', 'SCAN QR CODE'];
+
+        // Card Background
+        const grad = pCtx.createLinearGradient(0, 0, W, H);
+        grad.addColorStop(0, themeColors[0]);
+        grad.addColorStop(1, themeColors[1]);
+        pCtx.fillStyle = grad;
+        pCtx.fillRect(0, 0, W, H);
+
+        // Inner White Card
+        pCtx.fillStyle = '#ffffff';
+        pCtx.beginPath();
+        pCtx.roundRect(36, 36, W - 72, H - 72, 28);
+        pCtx.fill();
+
+        // Top Banner
+        pCtx.fillStyle = themeColors[0];
+        pCtx.beginPath();
+        pCtx.roundRect(64, 68, W - 128, 120, 18);
+        pCtx.fill();
+
+        pCtx.fillStyle = '#ffffff';
+        pCtx.textAlign = 'center';
+        pCtx.font = '900 34px system-ui, sans-serif';
+        pCtx.fillText(title, W / 2, 122, W - 160);
+        pCtx.font = '700 19px system-ui, sans-serif';
+        pCtx.fillStyle = '#93c5fd';
+        pCtx.fillText(themeColors[2], W / 2, 162, W - 160);
+
+        // Draw QR in center
+        const qrTemp = document.createElement('canvas');
+        drawStyledQR(qrTemp, payload, {
+          size: 520,
+          dotShape: document.getElementById('st-dot-shape').value,
+          eyeShape: document.getElementById('st-eye-shape').value,
+          fg1: themeColors[0],
+          fg2: themeColors[1],
+          bg: '#ffffff',
+          useGrad: true,
+          centerBadge: theme === 'upi' ? '₹' : theme === 'wifi' ? '📶' : theme === 'whatsapp' ? '💬' : '⭐',
+          frameText: ''
+        });
+
+        pCtx.drawImage(qrTemp, (W - 520) / 2, 220);
+
+        // Subtitle & Footer
+        pCtx.fillStyle = '#0f172a';
+        pCtx.font = '800 24px system-ui, sans-serif';
+        pCtx.fillText(sub, W / 2, 795, W - 120);
+
+        pCtx.fillStyle = '#f1f5f9';
+        pCtx.beginPath();
+        pCtx.roundRect(64, 845, W - 128, 95, 16);
+        pCtx.fill();
+
+        pCtx.fillStyle = '#334155';
+        pCtx.font = '800 21px system-ui, sans-serif';
+        pCtx.fillText(foot, W / 2, 900, W - 150);
+
+        document.getElementById('live-payload-display').textContent = payload;
+        document.getElementById('preview-res-badge').textContent = `${W} × ${H} px (Standee)`;
+      }
+
+      /* ----------------------------------------------------------------------
+         RENDER 1D BARCODE (CODE-128)
+         ---------------------------------------------------------------------- */
+      function renderBarcode1D() {
+        const val = document.getElementById('bc-value').value.trim() || 'SOLU-2026';
+        const topLabel = document.getElementById('bc-title').value.trim();
+        const barH = parseInt(document.getElementById('bc-height').value, 10);
+        const scale = parseInt(document.getElementById('bc-scale').value, 10);
+
+        const bits = Code128Generator.encode(val);
+        const margin = 36;
+        const w = bits.length * scale + margin * 2;
+        const h = barH + 92;
+
+        previewCanvas.width = w;
+        previewCanvas.height = h;
+        pCtx.fillStyle = '#ffffff';
+        pCtx.fillRect(0, 0, w, h);
+
+        if (topLabel) {
+          pCtx.fillStyle = '#0f172a';
+          pCtx.font = '800 16px system-ui, sans-serif';
+          pCtx.textAlign = 'center';
+          pCtx.fillText(topLabel, w / 2, 28, w - 20);
+        }
+
+        pCtx.fillStyle = '#000000';
+        for (let i = 0; i < bits.length; i++) {
+          if (bits[i] === '1') {
+            pCtx.fillRect(margin + i * scale, 42, scale, barH);
+          }
+        }
+
+        pCtx.font = '700 17px monospace';
+        pCtx.textAlign = 'center';
+        pCtx.fillText(val, w / 2, 42 + barH + 26, w - 20);
+
+        document.getElementById('live-payload-display').textContent = `Code-128 Barcode: ${val}`;
+        document.getElementById('preview-res-badge').textContent = `${w} × ${h} px`;
+      }
+
+      /* ----------------------------------------------------------------------
+         RENDER A4 BULK STICKER SHEET
+         ---------------------------------------------------------------------- */
+      function renderBulkA4Sheet() {
+        const [cols, rows] = document.getElementById('bulk-grid').value.split('x').map(Number);
+        const mode = document.getElementById('bulk-mode').value;
+        const total = cols * rows;
+
+        const W = 1240, H = 1754; // High-Res A4 Portrait
+        previewCanvas.width = W;
+        previewCanvas.height = H;
+        pCtx.fillStyle = '#ffffff';
+        pCtx.fillRect(0, 0, W, H);
+
+        const pad = 40;
+        const cellW = Math.floor((W - pad * 2) / cols);
+        const cellH = Math.floor((H - pad * 2) / rows);
+        const qrSize = Math.min(cellW - 28, cellH - 44);
+
+        const rawLines = document.getElementById('bulk-lines').value.split('\n').map((l) => l.trim()).filter(Boolean);
+        const defaultPayload = buildPayloadString();
+        const defaultLabel = document.getElementById('st-frame-text').value.trim();
+
+        for (let i = 0; i < total; i++) {
+          const r = Math.floor(i / cols);
+          const c = i % cols;
+          const x = pad + c * cellW;
+          const y = pad + r * cellH;
+
+          let itemPayload = defaultPayload;
+          let itemLabel = defaultLabel;
+
+          if (mode === 'list' && rawLines.length) {
+            const line = rawLines[i % rawLines.length];
+            const parts = line.split('|');
+            itemPayload = parts[0].trim();
+            itemLabel = parts[1] ? parts[1].trim() : itemPayload.slice(0, 18);
+          }
+
+          // Dotted Scissor Cut Border
+          pCtx.strokeStyle = '#cbd5e1';
+          pCtx.setLineDash([6, 6]);
+          pCtx.lineWidth = 1.5;
+          pCtx.strokeRect(x + 4, y + 4, cellW - 8, cellH - 8);
+          pCtx.setLineDash([]);
+
+          const subCanvas = document.createElement('canvas');
+          drawStyledQR(subCanvas, itemPayload, {
+            size: qrSize,
+            dotShape: document.getElementById('st-dot-shape').value,
+            eyeShape: document.getElementById('st-eye-shape').value,
+            fg1: document.getElementById('st-fg1').value,
+            fg2: document.getElementById('st-fg2').value,
+            bg: '#ffffff',
+            useGrad: document.getElementById('st-use-grad').checked,
+            centerBadge: document.getElementById('st-center-badge').value,
+            frameText: ''
+          });
+
+          pCtx.drawImage(subCanvas, x + (cellW - qrSize) / 2, y + 10);
+
+          if (itemLabel) {
+            pCtx.fillStyle = '#0f172a';
+            pCtx.font = `800 ${Math.max(12, Math.round(cellH * 0.065))}px system-ui, sans-serif`;
+            pCtx.textAlign = 'center';
+            pCtx.fillText(itemLabel, x + cellW / 2, y + qrSize + 28, cellW - 20);
+          }
+        }
+
+        document.getElementById('live-payload-display').textContent = `A4 Sheet (${total} Stickers Ready to Print)`;
+        document.getElementById('preview-res-badge').textContent = `${W} × ${H} px (A4 Sheet)`;
+        toast(`🖨️ Built A4 Sheet with ${total} QR Stickers!`);
+      }
+
+      document.getElementById('btn-render-bulk').addEventListener('click', renderBulkA4Sheet);
+
+      /* ----------------------------------------------------------------------
+         MASTER OUTPUT DISPATCHER
+         ---------------------------------------------------------------------- */
+      function renderMainOutput() {
+        if (activeMode === 'standee') {
+          renderShopStandee();
+          return;
+        }
+        if (activeMode === 'barcode') {
+          renderBarcode1D();
+          return;
+        }
+        if (activeMode === 'bulk') {
+          renderBulkA4Sheet();
+          return;
+        }
+        if (activeMode === 'scanner' || activeMode === 'history') {
+          return;
+        }
+
+        const payload = buildPayloadString();
+        const opts = {
+          size: parseInt(document.getElementById('st-size').value, 10) || 600,
+          dotShape: document.getElementById('st-dot-shape').value,
+          eyeShape: document.getElementById('st-eye-shape').value,
+          fg1: document.getElementById('st-fg1').value,
+          fg2: document.getElementById('st-fg2').value,
+          bg: document.getElementById('st-bg').value,
+          useGrad: document.getElementById('st-use-grad').checked,
+          centerBadge: document.getElementById('st-center-badge').value,
+          frameText: document.getElementById('st-frame-text').value.trim()
+        };
+
+        drawStyledQR(previewCanvas, payload, opts);
+        document.getElementById('live-payload-display').textContent = payload;
+        document.getElementById('preview-res-badge').textContent = `${previewCanvas.width} × ${previewCanvas.height} px`;
+      }
+
+      // Bind live input listeners across all form controls
+      document.querySelectorAll('input, select, textarea').forEach((el) => {
+        if (el.type === 'file') return;
+        el.addEventListener('input', renderMainOutput);
+        el.addEventListener('change', renderMainOutput);
+      });
+
+      /* ----------------------------------------------------------------------
+         PART 4: QR SCANNER (IMAGE FILE + CAMERA)
+         ---------------------------------------------------------------------- */
+      async function decodeFromImageSource(imgSource) {
+        const out = document.getElementById('scan-result');
+        if ('BarcodeDetector' in window) {
+          try {
+            const detector = new window.BarcodeDetector({ formats: ['qr_code', 'code_128', 'ean_13'] });
+            const results = await detector.detect(imgSource);
+            if (results && results.length) {
+              out.value = results[0].rawValue;
+              toast('✅ QR / Barcode Decoded!');
+              return true;
+            }
+          } catch (e) {}
+        }
+        out.value = 'Note: Your current browser does not have native hardware BarcodeDetector enabled for this image. Try Chrome on Android/Desktop or clearer lighting.';
+        return false;
+      }
+
+      document.getElementById('scan-file-in').addEventListener('change', (e) => {
+        const f = e.target.files && e.target.files[0];
+        if (!f) return;
+        const r = new FileReader();
+        r.onload = (ev) => {
+          const img = new Image();
+          img.onload = () => {
+            previewCanvas.width = img.width;
+            previewCanvas.height = img.height;
+            pCtx.drawImage(img, 0, 0);
+            decodeFromImageSource(img);
+          };
+          img.src = ev.target.result;
+        };
+        r.readAsDataURL(f);
+      });
+
+      function stopCameraScan() {
+        if (camStream) {
+          camStream.getTracks().forEach((t) => t.stop());
+          camStream = null;
+        }
+        document.getElementById('scan-video').style.display = 'none';
+      }
+
+      document.getElementById('btn-start-cam').addEventListener('click', async () => {
+        const video = document.getElementById('scan-video');
+        if (camStream) {
+          stopCameraScan();
+          return;
+        }
+        try {
+          camStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+          video.srcObject = camStream;
+          video.style.display = 'block';
+          await video.play();
+
+          const scanLoop = async () => {
+            if (!camStream) return;
+            const found = await decodeFromImageSource(video);
+            if (found) {
+              stopCameraScan();
+            } else {
+              requestAnimationFrame(scanLoop);
+            }
+          };
+          requestAnimationFrame(scanLoop);
+        } catch (err) {
+          toast('⚠️ Camera permission denied or unavailable.');
+        }
+      });
+
+      document.getElementById('btn-copy-scan').addEventListener('click', () => {
+        const val = document.getElementById('scan-result').value;
+        if (!val) return;
+        navigator.clipboard.writeText(val);
+        toast('📋 Copied scanned result!');
+      });
+
+      document.getElementById('btn-open-scan').addEventListener('click', () => {
+        const val = document.getElementById('scan-result').value.trim();
+        if (val.startsWith('http://') || val.startsWith('https://') || val.startsWith('upi://')) {
+          window.open(val, '_blank');
+        } else {
+          toast('⚠️ Scanned content is plain text, not a URL.');
+        }
+      });
+
+      /* ----------------------------------------------------------------------
+         PART 5: SAVED HISTORY, EXPORT PNG/JPG, PRINT & SAVE APP HTML
+         ---------------------------------------------------------------------- */
+      function getSavedHistory() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch (e) { return []; }
+      }
+
+      document.getElementById('btn-save-history').addEventListener('click', () => {
+        const payload = document.getElementById('live-payload-display').textContent;
+        const list = getSavedHistory();
+        list.unshift({
+          mode: activeMode.toUpperCase(),
+          payload,
+          time: new Date().toLocaleString()
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(0, 30)));
+        toast('⭐ Saved to QR History!');
+      });
+
+      function renderHistoryList() {
+        const box = document.getElementById('history-list');
+        const list = getSavedHistory();
+        if (!list.length) {
+          box.innerHTML = '<div style="color:var(--text-sub);">No saved QR codes yet. Click ⭐ Save in the top bar to bookmark any QR.</div>';
+          return;
+        }
+        box.innerHTML = '';
+        list.forEach((item) => {
+          const row = document.createElement('div');
+          row.style = 'background:var(--bg-input);border:1px solid var(--border);border-radius:10px;padding:9px;display:flex;justify-content:space-between;align-items:center;gap:8px;';
+          row.innerHTML = `
+            <div style="min-width:0;">
+              <div style="font-weight:800;color:#60a5fa;font-size:11px;">${item.mode} • ${item.time}</div>
+              <div style="font-family:monospace;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.payload}</div>
+            </div>
+            <button type="button" class="btn btn-sm">Load</button>
+          `;
+          row.querySelector('button').addEventListener('click', () => {
+            document.getElementById('in-url').value = item.payload;
+            document.querySelector('[data-mode="url"]').click();
+            toast('✅ Loaded from history!');
+          });
+          box.appendChild(row);
+        });
+      }
+
+      document.getElementById('btn-clear-history').addEventListener('click', () => {
+        localStorage.removeItem(STORAGE_KEY);
+        renderHistoryList();
+        toast('🗑️ History cleared.');
+      });
+
+      function downloadCanvasAs(mime, ext) {
+        const a = document.createElement('a');
+        a.href = previewCanvas.toDataURL(mime, 0.96);
+        a.download = `solu-${activeMode}-${Date.now()}.${ext}`;
+        a.click();
+        toast(`⬇️ Downloaded .${ext.toUpperCase()}!`);
+      }
+
+      function printCurrentOutput() {
+        const img = document.getElementById('print-img');
+        img.src = previewCanvas.toDataURL('image/png');
+        img.onload = () => window.print();
+      }
+
+      function saveAppHtml() {
+        const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'solu-qr-mega-studio.html';
+        a.click();
+        toast('💾 Saved solu-qr-mega-studio.html!');
+      }
+
+      document.getElementById('btn-download-png').addEventListener('click', () => downloadCanvasAs('image/png', 'png'));
+      document.getElementById('btn-dl-png-2').addEventListener('click', () => downloadCanvasAs('image/png', 'png'));
+      document.getElementById('mob-dl-png').addEventListener('click', () => downloadCanvasAs('image/png', 'png'));
+      document.getElementById('btn-dl-jpg').addEventListener('click', () => downloadCanvasAs('image/jpeg', 'jpg'));
+
+      document.getElementById('btn-print-qr').addEventListener('click', printCurrentOutput);
+      document.getElementById('btn-print-2').addEventListener('click', printCurrentOutput);
+      document.getElementById('mob-print').addEventListener('click', printCurrentOutput);
+
+      document.getElementById('btn-download-html').addEventListener('click', saveAppHtml);
+      document.getElementById('mob-save-app').addEventListener('click', saveAppHtml);
+
+      // Initial Boot
+      renderMainOutput();
+    })();
+  </script>
+</body>
+</html>
